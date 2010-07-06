@@ -52,8 +52,8 @@ if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'ruby' && RUBY_VERSION >= '1.9'
 
   rescue LoadError
     warning_message = "WARNING: Please install unicode_utils gem to support Unicode aware upcase and downcase for String#mb_chars"
-    if defined?(Rails.logger) && Rails.logger
-      Rails.logger.warn warning_message
+    if defined?(Rails.logger)
+      Rails.logger.warn warning_message if Rails.logger
     elsif defined?(RAILS_DEFAULT_LOGGER) && RAILS_DEFAULT_LOGGER
       RAILS_DEFAULT_LOGGER.warn warning_message
     else
